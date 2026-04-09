@@ -45,6 +45,10 @@
 !/images/moorhuhn.webp
 !/.gitattributes
 !/.gitignore
+!/index.html
+!/LICENSE
+!/main.js
 !/README.md
+!/style.css
 
 
