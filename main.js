@@ -1,3 +1,52 @@
-let checken = 0;
+// ========================
+// canvas
+// ========================
+const canvas = document.getElementById("gameCanvas");
+const ctx = canvas.getContext("2d");
+
+// ========================
+// Huhn
+// ========================
+class Chicken {
+  constructor() {
+  this.x = Math.random() * 700;
+  this.y = Math.random() * 300;
+  this.speed = 2 + Math.random() * 3;
+  this.alive = true;
+  }
+  move() {
+    this.x += this.speed;
+    if (this.x > 800) this.x = -50;
+  }
+
+  draw() {
+    ctx.fillStyle = "red";
+    ctx.fillRect(this.x, this.y, 40, 40); 
+  }
+}
+
+// ========================
+// gameLoop
+// ========================
+const chickens = [new Chicken(), new Chicken()];
 let score = 0;
+
+function gameLoop () {
+  ctx.clearRect (0, 0, canvas.width, canvas.height);
+  
+  chickens.forEach(chicken => {
+    if (chicken.alive) {
+      chicken.move ();
+      chicken.draw ();
+    } 
+  });
+
+  requestAnimationFrame(gameLoop);
+}
+
+gameLoop();
+
+// ========================
+// schießen
+// ========================
 

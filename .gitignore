@@ -34,7 +34,7 @@
 # - für Dateien in Unterordnern                  # !/Pfad/zur/Datein.txt
 # - für einzelne Dateien                         # !Datein.txt
 ##############################################
-!/.docs/projektvisionen.md
+!/.docs/**
 !/.github/ISSUE_TEMPLATE/bug_report.md
 !/.github/ISSUE_TEMPLATE/feature_request.md
 !/.github/ISSUE_TEMPLATE/idea.md
