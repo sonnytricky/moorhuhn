@@ -1,3 +1,5 @@
+const scoreElement = document.getElementById("score");
+
 // ========================
 // canvas
 // ========================
@@ -11,7 +13,7 @@ class Chicken {
   constructor() {
   this.x = Math.random() * 700;
   this.y = Math.random() * 300;
-  this.speed = 2 + Math.random() * 3;
+  this.speed = 1 + Math.random() * 1.5; // speed = BASIS + Zufall * SPANNE // war auf 2 + Math.random() * 3
   this.alive = true;
   }
   move() {
@@ -49,4 +51,42 @@ gameLoop();
 // ========================
 // schießen
 // ========================
+canvas.addEventListener("click", function(event) {
+  const rect = canvas.getBoundingClientRect();
+
+  const mouseX = event.clientX - rect.left;
+  const mouseY = event.clientY - rect.top;
+
+  trefferErkennung(mouseX, mouseY);
+});
+
+// ========================
+// Treffererkennung
+// ========================
+function trefferErkennung(mausX, mausY) {
+  chickens.forEach(chicken => {
+    if (
+      chicken.alive &&
+      mausX > chicken.x &&
+      mausX < chicken.x + 40 &&
+      mausY > chicken.y &&
+      mausY < chicken.y + 40
+    ) {
+      chicken.alive = false;
+      score++;
+      scoreElement.textContent = score;
+
+      console.log("Treffer! Score:", score);
+    }
+  });
+}
+
+/* TODO:
+* - resparn fehlt
+* - Timer fehlt noch
+* - 
+* - 
+* - 
+* - 
+*/
 
