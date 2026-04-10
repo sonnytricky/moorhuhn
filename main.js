@@ -84,7 +84,7 @@ function trefferErkennung(mausX, mausY) {
 /* TODO:
 * - resparn fehlt
 * - Timer fehlt noch
-* - 
+* - mehrere Hühner
 * - 
 * - 
 * - 
