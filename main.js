@@ -1,8 +1,8 @@
 /* TODO:
 * - [ ] resparn fehlt
-* - [ ] Timer + gameover seite
+* - [x] Timer + gameover seite 
 * - [ ] mehrere Hühner
-* - [ ] 
+* - [ ] CSS <--- wird momentan bearbeitet
 * - [ ]  
 * - [ ] 
 */
@@ -49,6 +49,8 @@ const chickens = [new Chicken(), new Chicken()];
 let score = 0;
 
 function gameLoop () {
+  if (!gameRunning) return;  // Für Game Over
+
   ctx.clearRect (0, 0, canvas.width, canvas.height);
   
   chickens.forEach(chicken => {
@@ -110,4 +112,15 @@ const timer = setInterval(() => {
   }
 }, 1000);
 
+// ========================
+// Game Over
+// ========================
+function endGame() {
+  gameRunning = false;
 
+  if (score < 5) {
+    gameOverElement.style.display = "block";
+  }
+
+  console.log("Game Over! Score:", score);
+}
