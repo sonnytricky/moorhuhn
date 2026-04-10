@@ -1,4 +1,19 @@
+/* TODO:
+* - [ ] resparn fehlt
+* - [ ] Timer + gameover seite
+* - [ ] mehrere Hühner
+* - [ ] 
+* - [ ]  
+* - [ ] 
+*/
+
 const scoreElement = document.getElementById("score");
+
+const timeElement = document.getElementById("time");
+const gameOverElement = document.getElementById("gameOver");
+
+let timeLeft = 30; // Sekunden
+let gameRunning = true;
 
 // ========================
 // canvas
@@ -81,12 +96,18 @@ function trefferErkennung(mausX, mausY) {
   });
 }
 
-/* TODO:
-* - resparn fehlt
-* - Timer fehlt noch
-* - mehrere Hühner
-* - 
-* - 
-* - 
-*/
+// ========================
+// Timer
+// ========================
+const timer = setInterval(() => {
+  if (!gameRunning) return;
+
+  timeLeft--;
+  timeElement.textContent = "Time: " + timeLeft;
+
+  if (timeLeft <= 0) {
+    endGame();
+  }
+}, 1000);
+
 
